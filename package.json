@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run unocss:dev\" \"npm run start\"",
+    "build": "yarn run unocss:build && umi build",
+    "start": "umi dev",
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage",
+    "unocss:dev": "unocss src/pages/**/*.tsx --watch -o src/uno.css",
+    "unocss:build": "unocss src/pages/**/*.tsx  -o  src/uno.css"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^6.5.0",
+    "react": "17.x",
+    "react-dom": "17.x",
+    "umi": "^3.5.40"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.64",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@umijs/preset-react": "1.x",
+    "@umijs/test": "^3.5.40",
+    "@unocss/webpack": "^0.51.12",
+    "concurrently": "^8.0.1",
+    "lint-staged": "^10.0.7",
+    "prettier": "^2.2.0",
+    "typescript": "^4.1.2",
+    "unocss": "^0.51.12",
+    "yorkie": "^2.0.0"
+  }
+}
