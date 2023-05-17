@@ -79,8 +79,8 @@ export default function IndexPage() {
 
 ```json
 "scripts": {
-    "unocss:dev": "unocss src/pages/**/*.tsx --watch -o src/uno.css",
-    "unocss:build": "unocss src/pages/**/*.tsx  -o  src/uno.css"
+    "unocss:dev": "unocss \"src/{components,pages,layouts}/**/*.tsx\" --watch -o src/uno.css",
+    "unocss:build": "unocss \"src/{components,pages,layouts}/**/*.tsx\"  -o  src/uno.css"
 },
 ```
 
@@ -97,14 +97,14 @@ export default function IndexPage() {
    ```json
    "dev": "concurrently \"npm run unocss:dev\" \"npm run start\"",
    "start": "umi dev",
-   "unocss:dev": "unocss src/pages/**/*.tsx --watch -o src/uno.css",
+   "unocss:dev": "unocss \"src/{components,pages,layouts}/**/*.tsx\" --watch -o src/uno.css",
    ```
 
    3. 打包先运行 unocss ，再执行打包
 
    ```json
    "build": "yarn run unocss:build && umi build",
-   "unocss:build": "unocss src/pages/**/*.tsx -o src/uno.css"
+   "unocss:build": "unocss \"src/{components,pages,layouts}/**/*.tsx\" -o src/uno.css"
    ```
 
 3. 在入口导入生成的 uno.css
